@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu
+  namespace: redis-cluster
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: ubuntu
+  template:
+    metadata:
+      labels:
+        name: ubuntu
+    spec:
+      containers:
+      - name: ubuntu
+        image: 192.168.221.10/project/ubuntu:16.04v1
+        imagePullPolicy: Always
+        command: ["/sbin/init"]
